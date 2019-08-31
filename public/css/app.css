@@ -586,6 +586,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  color: #000;
 }
 
 @media (min-width: 576px) {
@@ -4373,6 +4374,7 @@ input[type=button].btn-block {
   font-size: 1.125rem;
   line-height: inherit;
   white-space: nowrap;
+  color: #000;
 }
 
 .navbar-brand:hover,
@@ -4692,12 +4694,12 @@ input[type=button].btn-block {
 }
 
 .navbar-dark .navbar-brand {
-  color: #fff;
+  color: #000;
 }
 
 .navbar-dark .navbar-brand:hover,
 .navbar-dark .navbar-brand:focus {
-  color: #fff;
+  color: #000;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -4717,7 +4719,7 @@ input[type=button].btn-block {
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-  color: #fff;
+  color: #000;
 }
 
 .navbar-dark .navbar-toggler {
@@ -4734,7 +4736,7 @@ input[type=button].btn-block {
 }
 
 .navbar-dark .navbar-text a {
-  color: #fff;
+  color: #000;
 }
 
 .navbar-dark .navbar-text a:hover,
