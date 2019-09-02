@@ -22,9 +22,12 @@
     <div id="app">
         
         @include('inc.navbar')
+        
+        @include('inc.button')
+        
         <div class="container">
-            @include('inc.messages')
-            @yield('content')
+          @include('inc.messages')
+          @yield('content')
         </div>
 </div>
 

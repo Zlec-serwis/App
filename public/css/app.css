@@ -4745,10 +4745,13 @@ input[type=button].btn-block {
 }
 
 .card {
-  position: relative;
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+  position: absolute;
   display: flex;
-  flex-direction: column;
-  min-width: 0;
+  flex-direction: row-reverse;
+  max-width: 300px;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
@@ -10627,7 +10630,7 @@ a.text-dark:focus {
   }
 
   .container {
-    min-width: 992px !important;
+    min-width: 300px !important;
   }
 
   .navbar {
