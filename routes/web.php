@@ -22,9 +22,11 @@ Route::get('/', function () {
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
+Route::get('/users', 'PagesController@users');
 
 Route::resource('posts', 'PostController');
 Route::get('/', 'PostController@index');
 Auth::routes();
-
+Route::get('/profile', 'UserController@profile');
+Route::post('/profile', 'UserController@update_avatar');
 Route::get('/dashboard', 'DashboardController@index');

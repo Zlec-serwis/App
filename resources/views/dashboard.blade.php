@@ -6,13 +6,13 @@
         <div class="col-xl-12">
             <div class="card-body">
                 <div class="card-header">
-                  <h1><strong>Panel</strong></h1>
+                  <h1><strong>Dashboard</strong></h1>
                 </div>
                 <div class="jumbotron text-center">
-                    <h3>Twoje Zlecenia</h3>
+                    <h3>Your Blog Posts</h3>
                     <table class="table table-striped">
                         <tr>
-                            <th>Tytuł</th>
+                            <th>Title</th>
                             <th></th>
                             <th></th>
                             
@@ -29,7 +29,7 @@
                         @endforeach
                      </table>
                      <div class="panel-body text-left">
-                        <a class="btn btn-outline-dark" href="/posts/create">Nowe Zlecenie</a>
+                        <a class="btn btn-outline-dark" href="/posts/create">Create Posts</a>
                     </div>
                 </div>
             </div>

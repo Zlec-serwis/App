@@ -2,14 +2,17 @@
 
 
 @section('content')
-    <a href="/posts" class=""><button type="button" class="card btn btn-default btn-outline-dark">Back</Button></a>
+<div class="card">
     <h1>{{$post->title}}</h1>
+    <h2>{{$post->user->name}}</h2>
     <div>
     {!!$post->body!!}
-    </div>    
+    </div>
     <hr>
-    <small>Written on {{$post->created_at}}</small>
+    <small>Dodane {{$post->created_at}}by {{$post->user->name}}</small>
     <hr>
+    <a href="/posts" class=""><button type="button" class="card btn btn-default btn-outline-dark">Wstecz</Button></a>
+
     @if(!Auth::guest())
         @if(Auth::user()->id == $post->user_id)
             <a href="/posts/{{$post->id}}/edit" class="btn btn-default btn-outline-dark">Edit</a>
@@ -20,6 +23,6 @@
         @endif
     @endif
 @endsection
-
+</div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

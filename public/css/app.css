@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -152,6 +151,7 @@ strong {
 
 small {
   font-size: 80%;
+  padding: 10px;
 }
 
 sub,
@@ -586,7 +586,6 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  color: #000;
 }
 
 @media (min-width: 576px) {
@@ -4374,7 +4373,6 @@ input[type=button].btn-block {
   font-size: 1.125rem;
   line-height: inherit;
   white-space: nowrap;
-  color: #000;
 }
 
 .navbar-brand:hover,
@@ -4694,12 +4692,12 @@ input[type=button].btn-block {
 }
 
 .navbar-dark .navbar-brand {
-  color: #000;
+  color: #fff;
 }
 
 .navbar-dark .navbar-brand:hover,
 .navbar-dark .navbar-brand:focus {
-  color: #000;
+  color: #fff;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -4719,7 +4717,7 @@ input[type=button].btn-block {
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-  color: #000;
+  color: #fff;
 }
 
 .navbar-dark .navbar-toggler {
@@ -4736,7 +4734,7 @@ input[type=button].btn-block {
 }
 
 .navbar-dark .navbar-text a {
-  color: #000;
+  color: #fff;
 }
 
 .navbar-dark .navbar-text a:hover,
@@ -4745,13 +4743,12 @@ input[type=button].btn-block {
 }
 
 .card {
-  -webkit-column-count: 3; /* Chrome, Safari, Opera */
-  -moz-column-count: 3; /* Firefox */
-  column-count: 3;
-  position: absolute;
+  position: relative;
   display: flex;
-  flex-direction: row-reverse;
-  max-width: 300px;
+  flex-direction: column;
+  max-width: 400;
+  margin:10px;
+  padding:10px;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
@@ -10630,7 +10627,7 @@ a.text-dark:focus {
   }
 
   .container {
-    min-width: 300px !important;
+    min-width: 992px !important;
   }
 
   .navbar {

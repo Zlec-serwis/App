@@ -17,17 +17,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fa.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         
         @include('inc.navbar')
-        
         @include('inc.button')
-        
         <div class="container">
-          @include('inc.messages')
-          @yield('content')
+            @include('inc.messages')
+            @yield('content')
         </div>
 </div>
 

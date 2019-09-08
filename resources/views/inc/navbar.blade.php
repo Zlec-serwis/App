@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
     <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -10,39 +10,45 @@
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/about">O Nas</a>
+            <a class="nav-link" href="/about">O nas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/services">Wykonawcy</a>
+            <a class="nav-link" href="/services">Kategorie</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/posts">Zlecenia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users">Wykonawcy</a>
           </li>
       </ul>
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ml-auto">
       <!-- Authentication Links -->
         @guest
-          <li class="nav-link ">
-            <a class="btn btn-warning" href="{{ route('login') }}" role="button">{{ __('Zaloguj') }}</a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
           </li>
         @if (Route::has('register'))
-          <li class="nav-link">
-            <a class="btn btn-danger" href="{{ route('register') }}" role="button">{{ __('Rejestracja') }}</a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
           </li>
           @endif
         @else
         <li class="dropdown nav-item">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+          
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
+              <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; left:10px; border-radius:50%">
                 {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
+              </a>
             
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/dashboard">Panel</a>
+            <a class="dropdown-item" href="/profile">Profil</a>
+            <a class="dropdown-item" href="/dashboard">Dashboard</a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                    {{ __('Wyloguj') }}
+                    {{ __('Logout') }}
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
