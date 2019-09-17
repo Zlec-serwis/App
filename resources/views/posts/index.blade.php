@@ -5,8 +5,9 @@
 @foreach ($posts as $post)
 
     <!-- Single post -->
-    <li class="card list-group-item">{{$post -> title}}</li>
-
+    <a href="{{ url('posts', $post->id) }}">
+        <li class="card list-group-item">{{$post -> title}}</li>
+    </a>
 @endforeach
 @endsection
     <!-- Scripts -->

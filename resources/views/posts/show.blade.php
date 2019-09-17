@@ -4,12 +4,11 @@
 @section('content')
 <div class="card">
     <h1>{{$post->title}}</h1>
-    <h2>{{$post->user->name}}</h2>
     <div>
     {!!$post->body!!}
     </div>
     <hr>
-    <small>Dodane {{$post->created_at}}by {{$post->user->name}}</small>
+    <small>Dodane by</small>
     <hr>
     <a href="/posts" class=""><button type="button" class="card btn btn-default btn-outline-dark">Wstecz</Button></a>
 
