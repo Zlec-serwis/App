@@ -75,7 +75,7 @@ class PostController extends Controller
     */
    public function edit($id)
    {
-       $post = Post::find($id);
+       $post = Post::findOrFail($id);
 
        if(auth()->user()->id !==$post->user_id){
            return redirect('/posts')->with('error', 'Unauthorized Page');
@@ -99,7 +99,7 @@ class PostController extends Controller
        ]);
 
        //Create Post
-       $post = Post::find($id);
+       $post = Post::findOrFail($id);
        $post->title = $request->input('title');
        $post->body = $request->input('body');
        $post->save();

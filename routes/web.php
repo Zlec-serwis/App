@@ -26,7 +26,6 @@ Route::get('/users', 'PagesController@users');
 
 Route::resource('posts', 'PostController');
 Route::get('/', 'PostController@index');
-Route::get('/posts/{id}', 'PostController@show');
 
 Auth::routes();
 Route::get('/profile', 'UserController@profile');
