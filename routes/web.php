@@ -26,8 +26,10 @@ Route::get('/users', 'PagesController@users');
 
 Route::resource('posts', 'PostController');
 Route::get('/', 'PostController@index');
+Route::get('/dashboard', 'PostController@dashboard');
+
 
 Auth::routes();
 Route::get('/profile', 'UserController@profile');
 Route::post('/profile', 'UserController@update_avatar');
-Route::get('/dashboard', 'DashboardController@index');
+

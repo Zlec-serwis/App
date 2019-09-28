@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Post;
+
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -23,6 +24,20 @@ class PostController extends Controller
        $posts = Post::latest()->get();
        return view('posts.index')->with('posts', $posts);
    }
+
+   /**
+    * Show dashboard for login user
+    */
+   public function dashboard()
+   {
+       $id = auth()->user()->id;
+       $post = Post::latest()
+                       ->where('user_id',$id)
+                       ->get();
+
+       return view('dashboard')->with('posts', $post);
+   }
+
 
    /**
     * Show the form for creating a new resource.

@@ -9,6 +9,7 @@
         <li class="card list-group-item">{{$post -> title}}</li>
     </a>
 @endforeach
+
 @endsection
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
