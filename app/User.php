@@ -37,5 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * User have many posts
+     */
+    public function videos()
+    {
+        return $this->hasMany('App\Post');
+    }
 
 }
