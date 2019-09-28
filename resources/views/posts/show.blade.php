@@ -10,6 +10,12 @@
     <hr>
     <small>Dodane by</small>
     <hr>
+    <hr>
+    <small>Kategorie</small>
+    @foreach ($post->categories as $category)
+        <a href="">{{ $category->name }}&nbsp;</a>
+    @endforeach
+    <hr>
     <a href="/posts" class=""><button type="button" class="card btn btn-default btn-outline-dark">Wstecz</Button></a>
 
     @if(!Auth::guest())

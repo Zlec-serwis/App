@@ -33,4 +33,12 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Category')->withTimestamps();
     }
+
+    /**
+     * List Id categories for post
+     */
+    public function getCategoryListAttribute()
+    {
+        return $this->categories->pluck('id')->all();
+    }
 }
