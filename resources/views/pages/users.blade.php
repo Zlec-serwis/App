@@ -2,7 +2,11 @@
 
 @section('content')
 <h1>{{$title}}</h1>
-<h2></h2>
+<ul class="list-group">
+  @foreach($doers as $doer)
+        <li class="card list-group-item">{{ $doer->name }}</li>
+  @endforeach
+
 
 @endsection
 
