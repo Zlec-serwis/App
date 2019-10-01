@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card">
-  <h2>Wykonawcy</h2>
-</div>
-  @endsection
+<h1>{{$title}}</h1>
+<h2></h2>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+@endsection
+
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>

@@ -24,6 +24,7 @@ class PagesController extends Controller
     }
     public function users() {
         $title = 'Wykonawcy';
-        return view('pages.users')->with($title);
+        
+        return view('pages.users', compact('title'));
     }
 }
