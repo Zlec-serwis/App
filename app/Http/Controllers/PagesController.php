@@ -24,9 +24,7 @@ class PagesController extends Controller
     }
     public function users() {
         $title = 'Wykonawcy';
-        $doer = User::All();
-        $doers = $doer->where('doer', 1);
-      
+        $doers = User::where('doer', 1)->latest()->get();
         return view('pages.users', compact('title', 'doers'));
     }
 
