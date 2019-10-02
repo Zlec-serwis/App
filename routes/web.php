@@ -22,7 +22,8 @@ Route::get('/', function () {
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
-Route::get('/users', 'PagesController@users');
+//Route::get('/users', 'PagesController@users');
+
 
 Route::resource('posts', 'PostController');
 Route::get('/', 'PostController@index');
@@ -32,4 +33,6 @@ Route::get('/dashboard', 'PostController@dashboard');
 Auth::routes();
 Route::get('/profile', 'UserController@profile');
 Route::post('/profile', 'UserController@update_avatar');
+Route::get('/users', 'UserController@users');
+Route::get('/users/{id}', 'UserController@show');
 

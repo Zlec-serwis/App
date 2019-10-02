@@ -22,10 +22,6 @@ class PagesController extends Controller
         );
         return view('pages.services')->with($data);
     }
-    public function users() {
-        $title = 'Wykonawcy';
-        $doers = User::where('doer', 1)->latest()->get();
-        return view('pages.users', compact('title', 'doers'));
-    }
+   
 
 }

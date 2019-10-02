@@ -24,4 +24,26 @@ class UserController extends Controller
 
         return view('profile', array('user'=> Auth::user()) );
     }
+
+    /**
+     * list of doers
+     */
+    public function users()
+    {
+        $title = 'Wykonawcy';
+        $doers = User::where('doer', 1)->latest()->get();
+        return view('doer.users', compact('title', 'doers'));
+    }
+
+    /*
+     *show doer
+     */
+
+    public function show($id)
+    {
+        $doer = User::find($id);
+        return $doer;
+    }
+
+
 }
