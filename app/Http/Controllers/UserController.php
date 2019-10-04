@@ -46,15 +46,4 @@ class UserController extends Controller
     }
 
 
-    /**
-     * update profile
-     */
-    public function update(Request $request)
-    {
-        $user = Auth::user();
-        $user->update($request->all());
-        $user->save();
-
-        return view('profile', array('user' => Auth::user()));
-     }
 }
