@@ -14,7 +14,7 @@
                 <img class="embed-responsive-item" src="uploads/avatars/{{$doer->avatar}}" >
             </div>
             <div class="card-content">
-            <a href="users/{{$doer->id}}">
+            <a href="{{ url('doers', $doer->id) }}">
                 <h4>{{$doer->name}}</h4>
                 </a>
                 <p>{{$doer->description}}</p>

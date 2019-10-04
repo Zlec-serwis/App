@@ -33,6 +33,7 @@ Route::get('/dashboard', 'PostController@dashboard');
 Auth::routes();
 Route::get('/profile', 'UserController@profile');
 Route::post('/profile', 'UserController@update_avatar');
+Route::post('/profile', 'UserController@update');
 Route::get('/users', 'UserController@users');
 Route::get('/users/{id}', 'UserController@show');
 
