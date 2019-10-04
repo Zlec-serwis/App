@@ -2,7 +2,10 @@
 
 @section('content')
 <img src="/uploads/avatars/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px; ">
-    <h2>Profil {{$user->name}}</h2>
+    <h2>Profil {{$user->name}}
+    <a class="btn btn-default btn-outline-dark" href="/profile" role="button">Avatar</a>
+    <a class="btn btn-default btn-outline-dark" href="/profile/doer" role="button">Wykonawca</a>
+    </h2>
     <form enctype="multipart/form-data" action="profile" method="POST">
         <label>Zmiana Avatara</label>
         <input type="file" name="avatar">

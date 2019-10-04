@@ -45,5 +45,17 @@ class UserController extends Controller
         return $doer;
     }
 
+    /**	
+     * update profile	
+     */
+    public function doer_profile(Request $request)
+    {
+        $user = Auth::user();
+        $user->update($request->all());
+        $user->save();
+
+        return view('doer.doer', array('user' => Auth::user()));
+    }
+
 
 }
