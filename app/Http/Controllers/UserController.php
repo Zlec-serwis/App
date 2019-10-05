@@ -42,7 +42,7 @@ class UserController extends Controller
     public function show($id)
     {
         $doer = User::find($id);
-        return $doer;
+        return view('doer.show')->with('doer', $doer);
     }
 
     /**	
