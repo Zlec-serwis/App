@@ -41,4 +41,12 @@ class Post extends Model
     {
         return $this->categories->pluck('id')->all();
     }
+
+        /**
+     * Post have a user
+     */
+    public function address()
+    {
+        return $this->belongsTo('App\Address'); 
+    }
 }

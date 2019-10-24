@@ -12,8 +12,10 @@
             {{Form::textarea('body', '', ['id' => 'article-ckeditor','class' => 'form-control', 'placeholder' => 'Body Text'])}}</br>
           
             {{Form::label('CategoryList', 'Category List')}}</br>
-            {{Form::select('CategoryList', $categories , null, 
-                ['class' => 'form-control'])}}</br> 
+            {{Form::select('CategoryList', $categories , null, ['class' => 'form-control'])}}</br> 
+
+            {{Form::label('AddressesList', 'Adres')}}</br>
+            {{Form::select('Addresses', $addresses , null, ['class' => 'form-control'])}}</br> 
             
             {{Form::submit('Submit', ['class'=> 'btn btn-default btn-outline-dark'])}}
         </div>

@@ -40,7 +40,7 @@ class User extends Authenticatable
     /**
      * User have many posts
      */
-    public function videos()
+    public function posts()
     {
         return $this->hasMany('App\Post');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Post;
@@ -47,7 +48,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::pluck('name', 'id');
-        return view('posts.create')->with('categories', $categories);
+        $addresses = Address::pluck('city', 'id');
+        return view('posts.create', compact('categories', 'addresses'));
     }
 
     /**
@@ -62,16 +64,22 @@ class PostController extends Controller
             'title' => 'required',
             'body' => 'required'
         ]);
-
+    
         //Create Post
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
+
+        $addressId = $request->input('Addresses');
+        $post->address_id = $addressId;
         $post->save();
 
         $categoryId = $request->input('CategoryList');
         $post->categories()->attach($categoryId);
+
+
+
         return redirect('/posts')->with('success', 'Post Created');
     }
 
