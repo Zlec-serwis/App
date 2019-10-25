@@ -35,14 +35,14 @@
 
     </div>
 
-    
+    <div class="btn-group" role="group" aria-label="Basic example">
 
     {!!Form::open(['action' => ['PostController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}
         {{Form::submit('Delete', ['class' => 'btn btn-default btn-danger btn-sm'])}}
     {!!Form::close()!!}
 
-    
+    </div>
         @endif
     @endif
 @endsection
