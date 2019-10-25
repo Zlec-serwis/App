@@ -48,7 +48,7 @@
     </div>
     <!-- right col. -->
     <div class="col-xs-12 col-md-8">
-
+        
         <div class="card">
             <div class="embed-responsive embed-responsive-16by9">
                 <img class="embed-responsive-item" src="uploads/avatars/{{$doer->avatar}}" >

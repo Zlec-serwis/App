@@ -7,10 +7,9 @@ use App\Post;
 
 class DashboardController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Show dashboard for login user
      */
     public function index()
     {

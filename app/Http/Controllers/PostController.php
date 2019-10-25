@@ -27,20 +27,6 @@ class PostController extends Controller
     }
 
     /**
-     * Show dashboard for login user
-     */
-    public function dashboard()
-    {
-        $id = auth()->user()->id;
-        $post = Post::latest()
-            ->where('user_id', $id)
-            ->get();
-
-        return view('dashboard')->with('posts', $post);
-    }
-
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
