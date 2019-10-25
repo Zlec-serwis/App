@@ -36,12 +36,15 @@
           @endif
         @else
         <li class="dropdown nav-item">
-          
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
-              <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; left:10px; border-radius:50%">
-                {{ Auth::user()->name }} <span class="caret"></span>
-              </a>
-            
+
+            @if(Auth::user()->doer=0)
+            <a class="btn btn-default btn-outline-dark" href="/profile/doer" role="button">Zostań wykonawcą</a>
+            @endif
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
+            <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; left:10px; border-radius:50%">
+              {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/profile">Profil</a>
             <a class="dropdown-item" href="/dashboard">Dashboard</a>
