@@ -37,7 +37,7 @@
         @else
         <li class="dropdown nav-item">
 
-            @if(Auth::user()->doer=0)
+            @if(Auth::user()->doer!=1)
             <a class="btn btn-default btn-outline-dark" href="/profile/doer" role="button">Zostań wykonawcą</a>
             @endif
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
