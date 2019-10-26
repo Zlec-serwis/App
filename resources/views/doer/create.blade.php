@@ -10,12 +10,12 @@
         </div>	
     </div>	
     <div class="form-group">
-        {!! Form::label('make', 'Make') !!}
+        {!! Form::label('make', 'Opis firmy') !!}
         {!! Form::text('make', '', ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
 
-        {{Form::label('CategoryList', 'Category List')}}</br>
+        {{Form::label('CategoryList', 'Kategoria firmy')}}</br>
         {{Form::select('CategoryList', $categories , null, ['class' => 'form-control'])}}</br> 
 
         {{Form::label('AddressesList', 'Adres')}}</br>

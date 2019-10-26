@@ -38,6 +38,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the doer record associated with the user.
+     */
+    public function doer()
+    {
+        return $this->has('App\Doer');
+    }
+
+    /**
      * User have many posts
      */
     public function posts()

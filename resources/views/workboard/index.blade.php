@@ -6,10 +6,10 @@
         <div class="col-xl-12">
             <div class="card-body">
                 <div class="card-header">
-                  <h1><strong>Tablica ogłoszeń</strong></h1>
+                  <h1><strong>Tablica zleceń</strong></h1>
                 </div>
                 <div class="jumbotron text-center">
-                    <h3>Your Blog Posts</h3>
+                    <h3>Dostępne zlecenia</h3>
                     <table class="table table-striped">
                         <tr>
                             <th>Title</th>
@@ -17,7 +17,7 @@
                             <th></th>
                             
                         </tr>
-
+                        
                          @foreach($posts as $post)
                         <tr>
                             <th>{{$post->title}}</th>

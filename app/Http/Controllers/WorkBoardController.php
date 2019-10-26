@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 
-class DashboardController extends Controller
+class WorkBoardController extends Controller
 {
-
     /**
      * Show dashboard for login user
      */
@@ -18,7 +17,7 @@ class DashboardController extends Controller
             ->where('user_id', $id)
             ->get();
   
-        return view('dashboard')->with('posts', $post);
+        return view('workboard.index')->with('posts', $post);
     }
 
     /**
