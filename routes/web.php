@@ -37,3 +37,6 @@ Route::get('/profile/doer', 'UserController@doer_profile');
 Route::post('/profile/doer', 'UserController@doer_profile');
 Route::get('/users', 'UserController@users');
 Route::get('/users/{id}', 'UserController@show');
+
+Route::get('/doer/create', 'UserController@create_doer');
+Route::post('/doer/create', 'UserController@store_doer');

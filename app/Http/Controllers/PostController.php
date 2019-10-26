@@ -20,9 +20,22 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::latest()->get();
+        $posts = Post::latest();
+
+        if ($request->city) {
+            $posts = $posts->where('address_id', '=', $request->city);
+        }
+
+        if ($request->category) {
+            $posts = $posts->whereHas('categories', function ($query) use ($request) {
+                $query->where('id', '=', $request->category);
+            });
+        }
+
+        $posts = $posts->get();
+
         return view('posts.index')->with('posts', $posts);
     }
 

@@ -18,4 +18,13 @@ class Doer extends Model
         return $this->belongsTo('App\User'); 
     }
 
+    
+    /**
+     * Doer have many categories
+     */
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category')->withTimestamps();
+    }
+
 }

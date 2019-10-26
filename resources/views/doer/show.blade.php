@@ -51,7 +51,7 @@
         
         <div class="card">
             <div class="embed-responsive embed-responsive-16by9">
-                <img class="embed-responsive-item" src="uploads/avatars/{{$doer->avatar}}" >
+                <img class="embed-responsive-item" src="/uploads/avatars/{{$doer->avatar}}" >
             </div>
                 <h4>Czym się zajmujemy</h4>
                 <p>{{$doer->description}}</p>
