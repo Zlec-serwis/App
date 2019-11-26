@@ -6,6 +6,7 @@ use App\Address;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $posts = Post::latest();
+        $doers = User::latest();
 
         if ($request->city) {
             $posts = $posts->where('address_id', '=', $request->city);
@@ -35,8 +37,9 @@ class PostController extends Controller
         }
 
         $posts = $posts->get();
+        $doers = $doers->where('doer', '=', 1)->get();
 
-        return view('posts.index')->with('posts', $posts);
+        return view('posts.index', compact('posts', 'doers'));
     }
 
     /**
