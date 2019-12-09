@@ -20,14 +20,14 @@
     <link href="{{ asset('css/fa.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        
-        @include('inc.navbar')
-        @include('inc.button')
-        <div class="container">
-            @include('inc.messages')
-            @yield('content')
-        </div>
+<div id="app">
+
+    @include('inc.navbar')
+    @include('inc.button')
+    <div class="container">
+        @include('inc.messages')
+        @yield('content')
+    </div>
 </div>
 
   <!--<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>

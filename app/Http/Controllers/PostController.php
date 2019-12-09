@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     }
     /**
      * Display a listing of the posts.
@@ -40,6 +40,31 @@ class PostController extends Controller
         $doers = $doers->where('doer', '=', 1)->get();
 
         return view('posts.index', compact('posts', 'doers'));
+    }
+
+    public function search(Request $request)
+    {
+        $this->validate($request, [
+            'search' => 'required',
+        ]);
+
+        $q = $request->input('search');
+
+        $posts = Post::where('title','LIKE', '%'.$q.'%')
+                        ->orWhere('body','LIKE','%'.$q.'%')
+                        ->get();
+
+        $doers = User::where('doer', '=', 1)
+                        ->where('name','LIKE', '%'.$q.'%')
+                        ->get();
+
+        if(count($posts) || count($doers)  > 0){
+            return view('posts.index', compact('posts', 'doers'));
+        }
+        else {
+
+            return redirect('/')->with('error', 'No details found. Try to search again !');      
+        }
     }
 
     /**
