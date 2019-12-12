@@ -17,13 +17,13 @@ class Post extends Model
     public $primaryKey = 'id';
     // Timestamps
     public $timestamps = true;
-    
+
     /**
      * Post have a user
      */
     public function user()
     {
-        return $this->belongsTo('App\User'); 
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -31,7 +31,7 @@ class Post extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany('App\Category')->withTimestamps();
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
     /**
@@ -47,6 +47,11 @@ class Post extends Model
      */
     public function address()
     {
-        return $this->belongsTo('App\Address'); 
+        return $this->belongsTo('App\Address');
+    }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
     }
 }

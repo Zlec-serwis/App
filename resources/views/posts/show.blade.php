@@ -11,17 +11,17 @@
         <small>Kategoria</small>
         @foreach ($post->categories as $category)
             <small>
-                <a href="">{{ $category->name }}&nbsp;</a>
+                <a href="{{ route('posts.index', ['category' => $category->id]) }}">{{ $category->name }}&nbsp;</a>
             </small>
         @endforeach
     <hr>
-        <small>Dodane by</small>    
+        <small>Dodane by</small>
         <small>{{ $post->user->name }}</small>
     <hr>
-        <small>Lokalizacja</small>    
+        <small>Lokalizacja</small>
         <small>{{ $post->address->city }}, {{ $post->address->province }}</small>
     <hr>
-    
+
 
 
 
@@ -47,5 +47,3 @@
     @endif
 @endsection
 </div>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>

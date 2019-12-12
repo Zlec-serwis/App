@@ -15,14 +15,15 @@
                             <th>Title</th>
                             <th></th>
                             <th></th>
-                            
+
                         </tr>
 
                          @foreach($posts as $post)
                         <tr>
                             <th>{{$post->title}}</th>
                             <th><a href="/posts/{{$post->id}}/edit" class="btn btn-default btn-outline-dark">edit</a></th>
-                            <th> 
+                            <th><a href="/posts/{{$post->id}}/offers" class="btn btn-default btn-outline-dark">Pokaż oferty</a></th>
+                            <th>
                                 {!!Form::open(['action' => ['PostController@destroy', $post->id], 'method' => 'POST', 'class' => 'button'])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
@@ -40,5 +41,3 @@
     </div>
 </div>
 @endsection
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>

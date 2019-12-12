@@ -7,7 +7,7 @@
 
     <!-- left col. -->
     <div class="col-xs-12 col-md-4 single-left">
-        
+
         <!-- category -->
         <div class="card">
             <div class="left-col-box categories-box">
@@ -42,13 +42,13 @@
                     <li class="list-group-item">
                         <span class="badge">832</span>Negatywnych
                     </li>
-                </ul>                            
+                </ul>
             </div>
         </div>
     </div>
     <!-- right col. -->
     <div class="col-xs-12 col-md-8">
-        
+
         <div class="card">
             <div class="embed-responsive embed-responsive-16by9">
                 <img class="embed-responsive-item" src="/uploads/avatars/{{$doer->avatar}}" >
@@ -66,6 +66,3 @@
 </div>
 
 @endsection
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>

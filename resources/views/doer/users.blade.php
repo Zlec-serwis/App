@@ -9,7 +9,7 @@
     <!-- Single doer -->
     <div class="col-xs-12 col-md-6 col-lg-4 single-doer">
         <div class="card">
-        
+
             <div class="embed-responsive embed-responsive-16by9">
                 <img class="embed-responsive-item" src="uploads/avatars/{{$doer->avatar}}" >
             </div>
@@ -24,8 +24,5 @@
     </div>
      @endforeach
   </div>
- 
-@endsection
 
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
+@endsection

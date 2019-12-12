@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Address;
 use App\Category;
+use App\Http\Requests\PostApplyRequest;
+use App\Offer;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
@@ -24,20 +26,30 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $posts = Post::latest();
-        $doers = User::latest();
+        $users = User::whereHas('doerRelation')->latest();
 
         if ($request->city) {
             $posts = $posts->where('address_id', '=', $request->city);
+
+            $users = $users->whereHas('doerRelation', function($doers) use($request) {
+                $doers->where('address_id', $request->city);
+            });
         }
 
         if ($request->category) {
             $posts = $posts->whereHas('categories', function ($query) use ($request) {
                 $query->where('id', '=', $request->category);
             });
+
+            $users = $users->whereHas('doerRelation', function($doers) use($request) {
+                $doers->whereHas('categories', function($categories) use($request) {
+                    $categories->where('id', $request->category);
+                });
+            });
         }
 
         $posts = $posts->get();
-        $doers = $doers->where('doer', '=', 1)->get();
+        $doers = $users->get();
 
         return view('posts.index', compact('posts', 'doers'));
     }
@@ -63,7 +75,7 @@ class PostController extends Controller
         }
         else {
 
-            return redirect('/')->with('error', 'No details found. Try to search again !');      
+            return redirect('/')->with('error', 'No details found. Try to search again !');
         }
     }
 
@@ -91,7 +103,7 @@ class PostController extends Controller
             'title' => 'required',
             'body' => 'required'
         ]);
-    
+
         //Create Post
         $post = new Post;
         $post->title = $request->input('title');
@@ -133,7 +145,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $categories = Category::pluck('name', 'id');
 
-        if (auth()->user()->id !== $post->user_id) 
+        if (auth()->user()->id !== $post->user_id)
         {
         return redirect('/posts')->with('error', 'Unauthorized Page');
         }
@@ -146,7 +158,7 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response    
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -161,7 +173,7 @@ class PostController extends Controller
         $post->body = $request->input('body');
         $post->categories()->sync($request->input('CategoryList'));
         $post->save();
-        
+
 
         return redirect('/posts')->with('success', 'Post Updated');
     }
@@ -181,5 +193,35 @@ class PostController extends Controller
         }
         $post->delete();
         return redirect('/posts')->with('success', 'Post Removed');
+    }
+
+    public function applyShowForm(Post $post)
+    {
+        return view('posts.apply', ['post' => $post]);
+    }
+
+    public function apply(PostApplyRequest $request, Post $post)
+    {
+        Offer::create([
+            'user_id' => $post->user_id,
+            'doer_id' => auth()->user()->doerRelation->id,
+            'post_id' => $post->id,
+            'price' => $request->price,
+            'day' => $request->day,
+            'description' => $request->description,
+            'accepted' => 0
+        ]);
+
+        return redirect('workboard')->with('success', 'Oferta złożona pomyślnie');
+    }
+
+    public function showOffers(Post $post)
+    {
+        if(auth()->user()->id !== $post->user_id)
+            abort(403, 'Nie jest to Twoje zlecenie');
+
+        return view('posts.offers', [
+            'offers' => $post->offers
+        ]);
     }
 }

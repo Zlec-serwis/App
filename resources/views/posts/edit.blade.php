@@ -12,13 +12,10 @@
         {{Form::textarea('body', $post->body, ['id' => 'article-ckeditor','class' => 'form-control', 'placeholder' => 'Body Text'])}}</br>
 
         {{Form::label('CategoryList', 'Category List')}}</br>
-        {{Form::select('CategoryList', $categories , $post->category_list ?? null, 
+        {{Form::select('CategoryList', $categories , $post->category_list ?? null,
             ['class' => 'form-control'])}}</br>
     </div>
         {{Form::hidden('_method', 'PUT')}}
         {{Form::submit('Submit', ['class'=> 'btn btn-default btn-outline-dark'])}}
     {!!Form::close()!!}
 @endsection
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>

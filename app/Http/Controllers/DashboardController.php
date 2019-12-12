@@ -17,8 +17,8 @@ class DashboardController extends Controller
         $post = Post::latest()
             ->where('user_id', $id)
             ->get();
-  
-        return view('dashboard')->with('posts', $post);
+
+        return view('dashboard.index')->with('posts', $post);
     }
 
     /**

@@ -40,9 +40,9 @@ class User extends Authenticatable
     /**
      * Get the doer record associated with the user.
      */
-    public function doer()
+    public function doerRelation()
     {
-        return $this->has('App\Doer');
+        return $this->hasOne('App\Doer');
     }
 
     /**

@@ -52,8 +52,8 @@ class UserController extends Controller
         return view('doer.show')->with('doer', $doer);
     }
 
-    // /**	
-    //  * update profile	
+    // /**
+    //  * update profile
     //  */
     // public function doer_profile(Request $request)
     // {
@@ -62,15 +62,15 @@ class UserController extends Controller
     //     dd($user->description);
     //     $user->update($request->all());
     //     $user->save();
-        
+
     //     return view('doer.doer', array('user' => Auth::user()));
     // }
 
     /**
      * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
+
     public function create_doer()
     {
         $user = Auth::user();
@@ -78,7 +78,7 @@ class UserController extends Controller
 
         $categories = Category::pluck('name', 'id');
         $addresses = Address::pluck('city', 'id');
-        
+
         return view('doer.create', compact('user', 'doer', 'categories', 'addresses'));
     }
 
@@ -87,7 +87,7 @@ class UserController extends Controller
         $user = Auth::user();
         $user->doer = $request->input('doer');
         $user->save();
-        
+
         $doer = new Doer;
         $doer->user_id = Auth::user()->id;
         $doer->description = $request->input('make');
@@ -99,7 +99,7 @@ class UserController extends Controller
 
         $categoryId = $request->input('CategoryList');
         $doer->categories()->attach($categoryId);
-        
+
         return redirect('/profile');
 
     }

@@ -12,11 +12,15 @@ class WorkBoardController extends Controller
      */
     public function index()
     {
-        $id = auth()->user()->id;
-        $post = Post::latest()
-            ->where('user_id', $id)
-            ->get();
-  
+        $user = auth()->user();
+        $doer = $user->doerRelation;
+        if($doer === null)
+            abort(403, 'You are not allowed to see this page');
+
+        $post = Post::whereHas('categories', function($categories) use($doer) {
+            $categories->whereIn('id', $doer->categories->pluck('id')->toArray());
+        })->where('user_id', '!=', $user->id)->latest()->get();
+
         return view('workboard.index')->with('posts', $post);
     }
 

@@ -19,20 +19,36 @@ Route::get('/', function () {
 
 */
 
+use App\Http\Controllers\DashboardController;
+
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 //Route::get('/users', 'PagesController@users');
 
+Route::get('offers/{offer}/accept', 'OfferController@accept');
 
 Route::resource('posts', 'PostController');
+Route::get('posts/{post}/apply', 'PostController@applyShowForm');
+Route::post('posts/{post}/apply', 'PostController@apply');
+Route::get('posts/{post}/offers', 'PostController@showOffers');
 Route::get('/', 'PostController@index');
 Route::post('/search', 'PostController@search');
 
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/workboard', 'WorkBoardController@index');
+//Route::get('/dashboard', 'DashboardController@index');
+//Route::get('/workboard', 'WorkBoardController@index');
 
+Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function(){
 
+    Route::get('/', 'DashboardController@index');
+
+});
+
+Route::group(['prefix'=>'workboard', 'middleware'=>'auth'], function(){
+
+    Route::get('/', 'WorkboardController@index');
+
+});
 
 Auth::routes();
 Route::get('/profile', 'UserController@profile');

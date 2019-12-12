@@ -11,7 +11,6 @@
         <input type="hidden" name="_token"  value="{{ csrf_token() }}">
         <input type="submit"  class="pull-right btn btn-sm btn-primary">
     </form>
-@endsection
+<a class="btn btn-default btn-outline-dark" href="/doer/create" role="button">Zostań wykonawcą</a>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+@endsection

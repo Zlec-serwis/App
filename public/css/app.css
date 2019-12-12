@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -90,9 +91,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.5rem;
+  margin-top: 0;
   margin-bottom: 0.5rem;
-  padding: 0.5rem;
 }
 
 p {
@@ -151,7 +151,6 @@ strong {
 
 small {
   font-size: 80%;
-  padding: 10px;
 }
 
 sub,
@@ -4746,18 +4745,12 @@ input[type=button].btn-block {
   position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 400;
-  margin:10px;
-  padding:10px;
+  min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .card > hr {
@@ -4777,7 +4770,7 @@ input[type=button].btn-block {
 
 .card-body {
   flex: 1 1 auto;
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 
 .card-title {
