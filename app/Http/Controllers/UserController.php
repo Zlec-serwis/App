@@ -49,7 +49,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $doer = User::findorFail($id);
+        $doer = Doer::findorFail($id);
         return view('doer.show')->with('doer', $doer);
     }
 

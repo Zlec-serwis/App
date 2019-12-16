@@ -63,6 +63,19 @@
             </div>
         </div>
     </div>
+<hr>
+<div class="row">
+    <ul class="list-group">
+        @foreach($doer->comments as $comment)
+            <li class="list-group-item">
+                <strong>
+                    {{ $comment->created_at->diffForHumans() }}: &nbsp;
+                </strong>
+                {{ $comment ->body }}
+            </li>
+        @endforeach
+    </ul>
+
 </div>
 
 @endsection
