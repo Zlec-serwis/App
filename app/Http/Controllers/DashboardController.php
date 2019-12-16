@@ -14,11 +14,18 @@ class DashboardController extends Controller
     public function index()
     {
         $id = auth()->user()->id;
-        $post = Post::latest()
+        $posts = Post::latest()
             ->where('user_id', $id)
+            ->where('active', '=', 1)
             ->get();
 
-        return view('dashboard.index')->with('posts', $post);
+        $accepted = Post::latest()
+            ->where('user_id', $id)
+            ->where('active', '=', 0)
+            ->get();
+
+
+        return view('dashboard.index', compact('posts', 'accepted'));
     }
 
     /**

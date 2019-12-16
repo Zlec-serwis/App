@@ -23,7 +23,7 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
-Route::get('/services', 'PagesController@services');
+Route::get('/services', 'PostController@showCategories');
 //Route::get('/users', 'PagesController@users');
 
 Route::get('offers/{offer}/accept', 'OfferController@accept');
@@ -40,7 +40,7 @@ Route::post('/search', 'PostController@search');
 
 Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function(){
 
-    Route::get('/', 'DashboardController@index');
+        Route::get('/', 'DashboardController@index');
 
 });
 

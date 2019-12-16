@@ -15,13 +15,5 @@ class PagesController extends Controller
         $title = 'About Us';
         return view('pages.about')->with($title);
     }
-   public function services() {
-        $data = array(
-            'title' => 'Kategorie',
-            'services' => ['Budownictwo', 'Ogród', 'Mechanika samochodowa'],
-        );
-        return view('pages.services')->with($data);
-    }
-   
 
 }

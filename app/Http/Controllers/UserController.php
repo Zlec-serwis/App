@@ -38,8 +38,9 @@ class UserController extends Controller
     public function users()
     {
         $title = 'Wykonawcy';
-        $doers = User::where('doer', 1)->latest()->get();
-        return view('doer.users', compact('title', 'doers'));
+        $avatars = User::where('doer', 1)->latest()->get();
+        $doers = Doer::latest()->get();
+        return view('doer.users', compact('title', 'doers', 'avatars'));
     }
 
     /*
@@ -90,6 +91,7 @@ class UserController extends Controller
 
         $doer = new Doer;
         $doer->user_id = Auth::user()->id;
+        $doer->name = $request->input('name');
         $doer->description = $request->input('make');
 
         $addressId = $request->input('Addresses');

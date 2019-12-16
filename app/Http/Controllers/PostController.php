@@ -16,7 +16,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'search', 'showCategories']]);
     }
     /**
      * Display a listing of the posts.
@@ -223,5 +223,12 @@ class PostController extends Controller
         return view('posts.offers', [
             'offers' => $post->offers
         ]);
+    }
+
+    public function showCategories()
+    {
+        $categories = Category::latest()->get();
+
+        return view('posts.services', compact('categories'));
     }
 }

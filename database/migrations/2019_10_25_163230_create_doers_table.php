@@ -19,6 +19,7 @@ class CreateDoersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('address_id')->unsigned();
             $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
+            $table->mediumText(('name'));
             $table->mediumText(('description'));
             $table->timestamps();
         });

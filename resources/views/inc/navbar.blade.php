@@ -25,9 +25,7 @@
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ml-auto">
       <!-- Authentication Links -->
-        <li>
-          @include('forms.search')
-        </li>
+          @yield('search')
         @guest
           <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->mediumText('body');
             $table->bigInteger('address_id')->unsigned();
             $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
+            $table->boolean('active')->default('1');
             $table->timestamps();
         });
     }

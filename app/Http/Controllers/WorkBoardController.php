@@ -14,12 +14,15 @@ class WorkBoardController extends Controller
     {
         $user = auth()->user();
         $doer = $user->doerRelation;
+
         if($doer === null)
             abort(403, 'You are not allowed to see this page');
 
         $post = Post::whereHas('categories', function($categories) use($doer) {
             $categories->whereIn('id', $doer->categories->pluck('id')->toArray());
-        })->where('user_id', '!=', $user->id)->latest()->get();
+        })->where('user_id', '!=', $user->id)
+            ->where('active', '=', 1)
+            ->latest()->get();
 
         return view('workboard.index')->with('posts', $post);
     }

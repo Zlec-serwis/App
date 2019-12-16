@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="card">
-    <h1>{{$post->title}}</h1>
+<div class="card mt-3 p-4">
+    <h3>{{$post->title}}</h3>
     <div>
     {!!$post->body!!}
     </div>
@@ -15,7 +15,7 @@
             </small>
         @endforeach
     <hr>
-        <small>Dodane by</small>
+        <small>Dodane przez</small>
         <small>{{ $post->user->name }}</small>
     <hr>
         <small>Lokalizacja</small>
@@ -39,7 +39,7 @@
 
     {!!Form::open(['action' => ['PostController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
         {{Form::hidden('_method', 'DELETE')}}
-        {{Form::submit('Delete', ['class' => 'btn btn-default btn-danger btn-sm'])}}
+       {{-- {{Form::submit('Delete', ['class' => 'btn btn-default btn-danger btn-sm'])}} --}}
     {!!Form::close()!!}
 
     </div>

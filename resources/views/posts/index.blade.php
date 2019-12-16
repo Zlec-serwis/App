@@ -1,7 +1,12 @@
 @extends('layouts.app')
-
+@section('search')
+    <li>
+        @include('forms.search')
+    </li>
+@endsection
 @section('content')
     @include('inc.button', ['url' => url('posts')])
+
     <div class="row">
         <div class="col">
 

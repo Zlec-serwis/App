@@ -6,12 +6,13 @@
   <div class="row">
 
     @foreach($doers as $doer)
-    <!-- Single doer -->
+
+            <!-- Single doer -->
     <div class="col-xs-12 col-md-6 col-lg-4 single-doer">
-        <div class="card">
+        <div class="card" style="width: 14rem;">
 
             <div class="embed-responsive embed-responsive-16by9">
-                <img class="embed-responsive-item" src="uploads/avatars/{{$doer->avatar}}" >
+                <img class="embed-responsive-item" src="uploads/avatars/" >
             </div>
             <div class="card-content">
             <a href="users/{{$doer->id}}">
@@ -22,7 +23,7 @@
             </div>
         </div>
     </div>
-     @endforeach
+    @endforeach
   </div>
 
 @endsection
