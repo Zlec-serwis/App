@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Address;
 use App\Category;
+use App\Doer;
 use App\Http\Requests\PostApplyRequest;
 use App\Offer;
 use Illuminate\Http\Request;
@@ -25,27 +26,35 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::latest();
-        $users = User::whereHas('doerRelation')->latest();
+        $posts = Post::where('active', true)->latest();
+        $users = Doer::Latest();
 
         if ($request->city) {
-            $posts = $posts->where('address_id', '=', $request->city);
+            $posts = $posts->where('address_id', '=', $request->city)
+                ->where('active', true);
 
-            $users = $users->whereHas('doerRelation', function($doers) use($request) {
-                $doers->where('address_id', $request->city);
-            });
+            $users = $users->where('address_id', '=', $request->city);
+
+//            $users = $users->whereHas('doerRelation', function($doers) use($request) {
+//                $doers->where('address_id', $request->city);
+//            });
         }
 
         if ($request->category) {
             $posts = $posts->whereHas('categories', function ($query) use ($request) {
+                $query->where('id', '=', $request->category)
+                    ->where('active', true);
+            });
+
+            $users = $users->whereHas('categories', function ($query) use ($request) {
                 $query->where('id', '=', $request->category);
             });
 
-            $users = $users->whereHas('doerRelation', function($doers) use($request) {
-                $doers->whereHas('categories', function($categories) use($request) {
-                    $categories->where('id', $request->category);
-                });
-            });
+//            $users = $users->whereHas('categories', function ($query) use ($request) {
+//                $query->whereHas('categories', function($categories) use($request) {
+//                    $categories->where('id', $request->category);
+//                });
+//            });
         }
 
         $posts = $posts->get();
@@ -66,8 +75,8 @@ class PostController extends Controller
                         ->orWhere('body','LIKE','%'.$q.'%')
                         ->get();
 
-        $doers = User::where('doer', '=', 1)
-                        ->where('name','LIKE', '%'.$q.'%')
+        $doers = Doer::where('name','LIKE', '%'.$q.'%')
+                        ->orWhere('description','LIKE','%'.$q.'%')
                         ->get();
 
         if(count($posts) || count($doers)  > 0){

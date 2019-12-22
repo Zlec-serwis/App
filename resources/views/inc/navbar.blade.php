@@ -10,9 +10,6 @@
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/about">O nas</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/services">Kategorie</a>
           </li>
           <li class="nav-item">

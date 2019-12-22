@@ -37,10 +37,8 @@ class UserController extends Controller
      */
     public function users()
     {
-        $title = 'Wykonawcy';
-        $avatars = User::where('doer', 1)->latest()->get();
         $doers = Doer::latest()->get();
-        return view('doer.users', compact('title', 'doers', 'avatars'));
+        return view('doer.users', compact('doers'));
     }
 
     /*

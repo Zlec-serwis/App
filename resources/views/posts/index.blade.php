@@ -26,18 +26,19 @@
         </div>
         <div class="col">
 
-            <h2> Wykonawcy </h2>
+        <h2>Wykonawcy</h2>
+
         @foreach ($doers as $doer)
-            <!-- Single post -->
-                <a href="{{ url('users', $doer->id) }}">
-                    <li class="card list-group-item">
-                        {{$doer -> name}}
-                        <img width="30" height="30" class="d-inline-block rounded float-right"  src="uploads/avatars/{{$doer->avatar}}" >
-                    </li>
-                </a>
-            @endforeach
-
-
+        <!-- Single post -->
+            <a href="{{ url('users', $doer->id) }} " class="links">
+                <div class="card m-1">
+                    <div class="card-body">
+                        {{$doer->name}}
+                        <img width="30" height="30" class="d-inline-block rounded float-right"  src="uploads/avatars/{{$doer->user->avatar}}" >
+                    </div>
+                </div>
+            </a>
+        @endforeach
         </div>
     </div>
 </div>
