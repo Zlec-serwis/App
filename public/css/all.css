@@ -1,1 +1,13 @@
+.clean{
+    display:none
+}
 
+input[type="radio"]:checked+label tekst{
+    font-weight: bold;
+    color: #DA4939
+}
+
+input:checked + b[class='active']{
+    font-weight: bold;
+    color: #DA4939
+}
