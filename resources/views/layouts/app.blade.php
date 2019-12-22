@@ -17,6 +17,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fa.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
@@ -27,6 +28,7 @@
         @include('inc.messages')
         @yield('content')
     </div>
+{{--    @include('inc.footer')--}}
 </div>
 
 <script src="{{ asset('js/app.js') }}" defer></script>
