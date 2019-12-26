@@ -18,6 +18,11 @@ class Doer extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function addresRelation()
+    {
+        return $this->hasOne('App\Address');
+    }
+
 
     /**
      * Doer have many categories
