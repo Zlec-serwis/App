@@ -12,9 +12,8 @@
                     <h3>Dostępne zlecenia</h3>
                     <table class="table table-striped">
                         <tr>
-                            <th>Title</th>
-                            <th></th>
-                            <th></th>
+                            <th>Zlecenie</th>
+                            <th colspan="3"> Zarządzanie zleceniem</th>
                         </tr>
 
                          @foreach($posts as $post)
@@ -22,7 +21,7 @@
                             <th>{{$post->title}}</th>
                             <th></th>
                             <th>
-                                <a href="{{ url('posts/' . $post->id ) }}" class="btn btn-primary">Podgląd oferty</a>
+                                <a href="{{ url('posts/' . $post->id ) }}" class="btn btn-primary">Podgląd zlecenia</a>
                             </th>
                             <th>
                             @if($post->offers->count() != 0)
@@ -40,6 +39,30 @@
                      </table>
 
                 </div>
+
+                <div class="jumbotron text-center">
+                    <h3>Złożone oferty zlecenia</h3>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Zlecenie</th>
+                            <th colspan="3"> Zarządzanie zleceniem</th>
+                        </tr>
+
+                        @foreach($offers as $offer)
+                            <tr>
+                                <th>{{$offer->id}}</th>
+                                <th></th>
+                                <th>
+                                    <a href="{{ url('posts/' . $post->id ) }}" class="btn btn-primary">Podgląd oferty</a>
+                                </th>
+                                <th>
+
+                            </tr>
+                        @endforeach
+                    </table>
+
+                </div>
+
             </div>
         </div>
     </div>

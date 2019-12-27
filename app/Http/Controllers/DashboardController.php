@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Offer;
 
 class DashboardController extends Controller
 {
@@ -19,11 +20,10 @@ class DashboardController extends Controller
             ->where('active', '=', 1)
             ->get();
 
-        $accepted = Post::latest()
+        $accepted = Offer::latest()
             ->where('user_id', $id)
-            ->where('active', '=', 0)
+            ->where('accepted', '=', 1)
             ->get();
-
 
         return view('dashboard.index', compact('posts', 'accepted'));
     }

@@ -14,7 +14,7 @@
                         <tr>
                             <th>Ogłoszenie</th>
                             <th>Oferty</th>
-                            <th colspan="2">Zarządzanie ogłoszeniem</th>
+                            <th>Zarządzanie ogłoszeniem</th>
                         </tr>
 
                          @foreach($posts as $post)
@@ -22,13 +22,13 @@
                             <th>{{$post->title}}</th>
                             <th><a href="/posts/{{$post->id}}/offers" class="btn btn-default btn-outline-dark">Pokaż oferty</a></th>
                             <th>
-                                <a href="/posts/{{$post->id}}/edit" class="btn btn-default btn-outline-dark">Edytuj</a>
-                                <a href="/posts/{{$post->id}}" class="btn btn-default btn-outline-dark">Podgląd</a>
-                            </th>
-                            <th>
                                 {!!Form::open(['action' => ['PostController@destroy', $post->id], 'method' => 'POST', 'class' => 'button'])!!}
-                                    {{Form::hidden('_method', 'DELETE')}}
-                                    {{Form::submit('Usuń ogłoszenie', ['class' => 'btn btn-danger'])}}
+
+                                <a href="/posts/{{$post->id}}" class="btn btn-default btn-outline-success">Podgląd</a>
+                                <a href="/posts/{{$post->id}}/edit" class="btn btn-default btn-outline-primary">Edytuj</a>
+
+                                {{Form::hidden('_method', 'DELETE')}}
+                                {{Form::submit('Usuń ogłoszenie', ['class' => 'btn btn-outline-danger'])}}
                                 {!!Form::close()!!}
                             </th>
                         </tr>
@@ -43,14 +43,15 @@
                     <table class="table table-striped">
                         <tr>
                             <th>Ogłoszenie</th>
+                            <th>Firma</th>
                             <th>Ocena</th>
-
                         </tr>
 
                         @foreach($accepted as $accept)
                             <tr>
-                                <th>{{$accept->title}}</th>
-                                <th><a href="/posts/users/offers" class="btn btn-default btn-outline-dark">Oceń wykonawcę</a></th>
+                                <th>{{$accept->post->title}}</th>
+                                <th>{{$accept->doer->name}}</th>
+                                <th><a href="/users/{{$accept->doer->id}}" class="btn btn-default btn-outline-dark">Oceń wykonawcę</a></th>
                             </tr>
                         @endforeach
                     </table>
@@ -60,4 +61,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

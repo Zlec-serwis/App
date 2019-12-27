@@ -21,9 +21,15 @@
       </ul>
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ml-auto">
-      <!-- Authentication Links -->
+
+          <!-- Authentication Links -->
           @yield('search')
-        @guest
+          <li class="nav-item">
+              <a class="btn btn-outline-danger" href="/posts/create">Dodaj ogłoszenie</a>
+          </li>
+
+
+      @guest
           <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
           </li>
@@ -35,7 +41,8 @@
         @else
         <li class="dropdown nav-item">
 
-            @if(!Auth::user()->doer)
+
+        @if(!Auth::user()->doer)
             <a class="btn btn-default btn-outline-dark" href="/doer/create" role="button">Zostań wykonawcą</a>
             @endif
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
