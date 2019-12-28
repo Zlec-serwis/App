@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Doer extends Model
 {
     protected $fillable = [
-        'description',
+        'description', 'city',
     ];
 
     /**
@@ -18,9 +18,9 @@ class Doer extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function addresRelation()
+    public function address()
     {
-        return $this->hasOne('App\Address');
+        return $this->belongsTo(Address::class);
     }
 
 

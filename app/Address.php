@@ -19,8 +19,8 @@ class Address extends Model
         return $this->hasMany('App\Post');
     }
 
-    public function doerAddres()
+    public function doers()
     {
-        return $this->hasMany('App\Doer');
+        return $this->hasMany(Doer::class);
     }
 }
