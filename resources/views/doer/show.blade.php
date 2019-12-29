@@ -21,45 +21,57 @@
         <div class="col-12 text-center">
             <h2>NASZE OCENY</h2>
         </div>
-        <div class="card">
-            <div class="card-body">
 
-                @foreach($doer->comments as $comment)
+        @foreach($doer->comments as $comment)
+            @if($doer->comments->count() === 0)
+                <div class="card card-body m-1">
                     <div class="row">
-                        <div class="col-md-2">
-                            <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid">
-                            <p class="text-secondary text-center">{{ $comment->created_at->diffForHumans() }}</p>
-                        </div>
-
-                        <div class="col-md-10">
-                            <p>
-                                <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman Akash</strong></a>
-                                {{--                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>--}}
-                            </p>
-                            <div class="clearfix"></div>
-                            <p>{{ $comment->body }}</p>
+                        <div class="col-md-12">
+                            <p class="text-secondary text-center">Brak komentarzy</p>
                         </div>
                     </div>
-                @endforeach
+                </div>
+            @else
+            <div class="card card-body m-1">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="/uploads/avatars/{{$comment->user['avatar']}}" class="img img-rounded img-fluid">
+                        <p class="text-secondary text-center">{{ $comment->created_at->diffForHumans() }}</p>
+                    </div>
+
+                    <div class="col-md-10">
+                        <p>
+                            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{$comment->user['name']}}</strong></a>
+                            {{--                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>--}}
+                        </p>
+                        <div class="clearfix"></div>
+                        <p>{{ $comment->body }}</p>
+                    </div>
+                </div>
 
             </div>
-        </div>
+            @endif
+        @endforeach
+
         <!-- Formularz dodania komentarza -->
+        @if (Auth::check())
         <div class="card card-body col-md-12 mt-3">
-
-            {!! Form::open(['action' => 'CommentsController@store']) !!}
-
             <div class="form-group">
-                {!! Form::label('comment', 'Komentarz') !!}
-                {!! Form::textarea('comment', '', ['class' => 'form-control']) !!}
-            </div>
+                {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
 
-            <div class="form-group">
-                {{Form::submit('Dodaj komentarz', ['class'=> 'btn btn-default btn-outline-primary'])}}
-            </div>
+                {!! Form::label('body', 'Komentarz:') !!}
+                {{ Form::textarea('body', old('body'), ['class' => 'form-control']) }}
 
-            {!!Form::close()!!}
+                {{ Form::hidden('user_id', Auth::user()->id) }}
+                {{ Form::hidden('doer_id', $doer->id) }}
+
+                {{ Form::submit('Dodaj komentarz', ['class'=> 'btn btn-default btn-outline-dark mt-2']) }}
+                {{ Form::close() }}
+            </div>
         </div>
+        @else
+            <div class="card card-body col-md-12 mt-2 alert alert-info">Tylko zalogowani użytkownicy mogą oceniać firmy</div>
+        @endif
     </div>
 
     <div class="row jumbotron p-4 p-md-5 text-white shadow rounded bg-secondary mt-3 justify-content-center">

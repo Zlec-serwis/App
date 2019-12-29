@@ -29,14 +29,15 @@ Route::get('/services', 'PostController@showCategories');
 Route::get('offers/{offer}/accept', 'OfferController@accept');
 
 Route::resource('posts', 'PostController');
+Route::resource('comments', 'CommentsController');
+
 Route::get('posts/{post}/apply', 'PostController@applyShowForm');
 Route::post('posts/{post}/apply', 'PostController@apply');
 Route::get('posts/{post}/offers', 'PostController@showOffers');
 Route::get('/', 'PostController@index');
 Route::post('/search', 'PostController@search');
 
-//Route::get('/dashboard', 'DashboardController@index');
-//Route::get('/workboard', 'WorkBoardController@index');
+
 
 Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function(){
 
@@ -58,6 +59,7 @@ Route::get('/profile', 'UserController@showprofile');
 Route::get('/profile/doer', 'UserController@doer_profile');
 Route::post('/profile/doer', 'UserController@doer_profile');
 Route::get('/users', 'UserController@users');
+
 Route::get('/users/{id}', 'UserController@show');
 
 Route::get('/doer/create', 'UserController@create_doer');

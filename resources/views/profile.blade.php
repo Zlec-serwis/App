@@ -13,13 +13,7 @@
         <input type="hidden" name="_token"  value="{{ csrf_token() }}">
         <input type="submit"  class="pull-right btn btn-sm btn-primary">
     </form>
-<<<<<<< HEAD
-@if($user->doer==1)
-{{$user->doerRelation->description}}
-@else
-<p>Wyświetl przycisk zostań wykonawcą</p>
-@endif
-=======
+
     <br><br>
 <td valign="top"><div align="left">Sekcja wykonwacy</div></td>
 <table>
@@ -33,15 +27,14 @@
         <td valign="top"><div align="left">Adres:</div></td>
         <td valign="top">{{$user->doerRelation->address->city}}</td>
     @else
-        <td valign="top"><div>nie jesteś wykonawcą</td>
-        </tr>
+        <td valign="top"><div>nie jesteś wykonawcą </td>
+
     @endif
 
 </table>
 
 <p align="center"><a href="index.php"></a></p>
 
->>>>>>> 65c6c7f63a1d7f0abfe73b51d799a6f5c8c53754
 
 @endsection
 
