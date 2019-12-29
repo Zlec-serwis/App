@@ -1,40 +1,110 @@
 @extends('layouts.app')
 
 @section('content')
-<br><br>
-<img src="/uploads/avatars/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px; ">
-    <br><br><h2>Profil {{$user->name}}
-    <a class="btn btn-default btn-outline-dark" href="/profile" role="button">Edycja</a>
-    </h2>
-    <br><br><br>
-    <form enctype="multipart/form-data" action="profile" method="POST">
-        <label>Zmiana</label>
-        <input type="file" name="avatar">
-        <input type="hidden" name="_token"  value="{{ csrf_token() }}">
-        <input type="submit"  class="pull-right btn btn-sm btn-primary">
-    </form>
+<div class="container">
+    <div class="row card-body bg-white">
+        <div class="col-sm-12 mt-4 ml-5">
+            <h1>{{ $user->name }}</h1>
+        </div>
+        <div class="col-sm-3">
+            <div class="text-center m-3">
+                <img src="/uploads/avatars/{{ $user->avatar }}" class="img-thumbnail" alt="avatar">
+                <h6>Zmień awatar</h6>
+                <form enctype="multipart/form-data" action="profile" method="POST">
+                    <input type="file" name="avatar">
+                    <input type="hidden" name="_token"  value="{{ csrf_token() }}">
+                    <input type="submit" class="pull-right btn btn-sm btn-primary">
+                </form>
+            </div> <br> <hr>
 
-    <br><br>
-<td valign="top"><div align="left">Sekcja wykonwacy</div></td>
-<table>
-    <div class="clearfix"></div>
-    <hr style="margin:5px 0 5px 0;">
-    @if($user->doer==1)
-        <td valign="top"><div align="left">Nazwa firmy</div></td>
-        <td valign="top">{{$user->doerRelation->name}}</td>
-        <td valign="top"><div align="left">Opis:</div></td>
-        <td valign="top">{{$user->doerRelation->description}}</td>
-        <td valign="top"><div align="left">Adres:</div></td>
-        <td valign="top">{{$user->doerRelation->address->city}}</td>
-    @else
-        <td valign="top"><div>nie jesteś wykonawcą </td>
+            @if($user->doer==1)
+            <div class="card">
+                <div class="card-header">Firma</div>
+                <div class="card-body"><a href="/users/{{ $user->doerRelation['id'] }}">{{$user->doerRelation['name'] }}</a></div>
+            </div> <br><hr>
+            @endif
 
-    @endif
+            <ul class="list-group">
+                <li class="list-group-item text-muted">Aktywność</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Posty</strong></span> {{ $user->posts->count() }}</li>
+            </ul>
+        </div>
 
-</table>
+        <div class="col-sm-9">
+            <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">O mnie</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Moja firma</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
 
-<p align="center"><a href="index.php"></a></p>
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                    <div class="row mt-3 p-3">
+                        <div class="col-md-6">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{$user->name}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 p-3">
+                        <div class="col-md-6">
+                            <label>E-mail</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{$user->email}}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                    @if($user->doer==1)
+                    <div class="row mt-3 p-3">
+                        <div class="col-md-6">
+                            <label>Nazwa firmy</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{$user->doerRelation->name}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 p-3">
+                        <div class="col-md-6">
+                            <label>Opis</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{$user->doerRelation->description}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 p-3">
+                        <div class="col-md-6">
+                            <label>Adres</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{$user->doerRelation->address->city}}, {{$user->doerRelation->address->province}}</p>
+                        </div>
+                    </div>
+                    @else
+                    <div class="row mt-3 p-3">
+                        <div class="col text-center">
+                            <a class="btn btn-default btn-outline-danger btn-lg" href="/doer/create" role="button">Zostań wykonawcą</a>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @endsection
+
 
