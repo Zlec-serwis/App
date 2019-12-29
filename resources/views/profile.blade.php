@@ -15,21 +15,23 @@
     </form>
     <br><br>
 <td valign="top"><div align="left">Sekcja wykonwacy</div></td>
-<div class="clearfix"></div>
+<table>
+    <div class="clearfix"></div>
     <hr style="margin:5px 0 5px 0;">
-     @if($user->doer==1)
-    <td valign="top"><div align="left">Nazwa firmy</div></td>
-    <td valign="top">{{$user->doerRelation->name}}</td>
-    <td valign="top"><div align="left">Opis:</div></td>
-    <td valign="top">{{$user->doerRelation->description}}</td>
-    <td valign="top"><div align="left">Adres:</div></td>
-    <td valign="top">{{$user->doerRelation->address->city}}</td>
+    @if($user->doer==1)
+        <td valign="top"><div align="left">Nazwa firmy</div></td>
+        <td valign="top">{{$user->doerRelation->name}}</td>
+        <td valign="top"><div align="left">Opis:</div></td>
+        <td valign="top">{{$user->doerRelation->description}}</td>
+        <td valign="top"><div align="left">Adres:</div></td>
+        <td valign="top">{{$user->doerRelation->address->city}}</td>
     @else
-    <td valign="top"><div>nie jesteś wykonawcą</td>
-  </tr>
-  @endif
+        <td valign="top"><div>nie jesteś wykonawcą</td>
+        </tr>
+    @endif
 
 </table>
+
 <p align="center"><a href="index.php"></a></p>
 
 
