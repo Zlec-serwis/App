@@ -9,16 +9,14 @@
                         <h3>Dostępne oferty</h3>
                         <table class="table table-striped">
                             <tr>
-                                <th>Id</th>
-                                <th>Użytkownik</th>
+                                <th>Wykonawca</th>
                                 <th>Cena</th>
-                                <th>Liczba dni</th>
+                                <th>Czas wykonania (dni)</th>
                                 <th>Opis</th>
                                 <th>Akcje</th>
                             </tr>
                             @foreach($offers as $offer)
                                 <tr>
-                                    <td>{{ $offer->id }}</td>
                                     <td>{{ $offer->doer->name }}</td>
                                     <td>{{ $offer->price }}</td>
                                     <td>{{ $offer->day }}</td>

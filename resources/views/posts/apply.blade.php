@@ -4,7 +4,7 @@
     <h1>Złóż ofertę</h1>
     {!! Form::open(['method' => 'POST', 'action' => ['PostController@apply', $post->id]]) !!}
     <div class="form-group">
-        {{ Form::label('price', 'Cena') }}
+        {{ Form::label('price', 'Cena (w zł)') }}
         {{ Form::text('price', null, ['class' => 'form-control', 'placeholder' => 'Cena']) }}
     </div>
     <div class="form-group">

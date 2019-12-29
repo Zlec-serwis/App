@@ -53,49 +53,19 @@
         <h2>Złożone oferty</h2>
     </div>
     <div class="row mt-3">
-        <div class="col-md-4">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a class="btn btn-primary">Button</a>
+        @foreach ($post->offers as $offer)
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h4 class="card-title">{{$offer->doer->name}}</h4>
+                        <p class="card-text">{{$offer->description}}</p>
+                        <p class="card-text">Cena: {{$offer->price}}</p>
+                        <p class="card-text">Czas wykonana: {{$offer->day}} dni</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
 
-        <div class="col-md-4">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                </div>
-            </div>
-        </div>
 
     </div>
 </div>
@@ -104,38 +74,18 @@
         <h2>Firmy w twojej okolicy</h2>
     </div>
     <div class="row mt-3">
-        <div class="col-md-4">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a class="btn btn-primary">Button</a>
+        @foreach ($doers as $doer)
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h4 class="card-title">{{$doer->name}}</h4>
+                        <p class="card-text">{{$doer->description}}</p>
+                        <p><a class="btn btn-outline-dark" href="/users/{{$doer->id}}" role="button">Więcej »</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
 
     </div>
 </div>

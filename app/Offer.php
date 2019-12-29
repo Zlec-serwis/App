@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
-    protected $fillable = ['user_id', 'doer_id', 'post_id', 'price', 'day', 'description', 'accepted'];
+    protected $fillable = ['user_id', 'doer_id', 'post_id', 'price', 'day', 'description', 'accepted', 'status_id'];
 
     public function user()
     {
@@ -25,6 +25,6 @@ class Offer extends Model
 
     public function status()
     {
-        return $this->hasMany(Status::class);
+        return $this->belongsTo(Status::class);
     }
 }

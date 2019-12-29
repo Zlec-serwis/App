@@ -21,15 +21,24 @@ class WorkBoardController extends Controller
 
         $posts = Post::whereHas('categories', function($categories) use($doer) {
             $categories->whereIn('id', $doer->categories->pluck('id')->toArray());
-        })->where('user_id', '!=', $user->id)
+        })->where('address_id', '=', $doer->address_id)
+            ->where('user_id', '!=', $user->id)
             ->where('active', '=', 1)
             ->latest()->get();
 
         $offers = Offer::where('doer_id', '=', $doer->id)
+                ->where('status_id', '=', 1)
                 ->latest()->get();
 
+        $accepted = Offer::where('doer_id', '=', $doer->id)
+            ->where('accepted', true)
+            ->latest()->get();
 
-        return view('workboard.index', compact('posts', 'offers'));
+        $rejected = Offer::where('doer_id', '=', $doer->i)
+            ->where('accepted', false)
+            ->where('status_id', '=', 2)
+            ->latest()->get();
+        return view('workboard.index', compact('posts', 'offers','accepted','rejected'));
     }
 
     /**

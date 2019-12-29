@@ -13,8 +13,8 @@ class OfferController extends Controller
             abort(403, 'Nie możesz zaakceptować czyjegoś zlecenia');
 
         $offer->update(['accepted' => 1]);
+        $offer->update(['status_id' => 3]);
         $offer->post()->update(['active' => 0]);
-
 
 
         return redirect('dashboard')->with('success', 'Oferta zaakceptowana pomyślnie');
