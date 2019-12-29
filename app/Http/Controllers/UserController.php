@@ -15,6 +15,7 @@ use phpDocumentor\Reflection\DocBlock\Description;
 class UserController extends Controller
 {
     public function profile(){
+        
         return view('profile', array('user'=> Auth::user()) );
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Offer;
 
 class WorkBoardController extends Controller
 {
@@ -18,13 +19,17 @@ class WorkBoardController extends Controller
         if($doer === null)
             abort(403, 'You are not allowed to see this page');
 
-        $post = Post::whereHas('categories', function($categories) use($doer) {
+        $posts = Post::whereHas('categories', function($categories) use($doer) {
             $categories->whereIn('id', $doer->categories->pluck('id')->toArray());
         })->where('user_id', '!=', $user->id)
             ->where('active', '=', 1)
             ->latest()->get();
 
-        return view('workboard.index')->with('posts', $post);
+        $offers = Offer::where('doer_id', '=', $doer->id)
+                ->latest()->get();
+
+
+        return view('workboard.index', compact('posts', 'offers'));
     }
 
     /**
