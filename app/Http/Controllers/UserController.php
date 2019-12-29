@@ -19,6 +19,15 @@ class UserController extends Controller
         return view('profile', array('user'=> Auth::user()) );
     }
 
+    //show user profile
+    public function showprofile()
+    {
+        $user = Auth::user();
+        return view('profile', compact('user'));
+        
+    }
+
+
     public function update_avatar(Request $request) {
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');

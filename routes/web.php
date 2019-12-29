@@ -53,6 +53,8 @@ Route::group(['prefix'=>'workboard', 'middleware'=>'auth'], function(){
 Auth::routes();
 Route::get('/profile', 'UserController@profile');
 Route::post('/profile', 'UserController@update_avatar');
+Route::get('/profile', 'UserController@showprofile');
+
 Route::get('/profile/doer', 'UserController@doer_profile');
 Route::post('/profile/doer', 'UserController@doer_profile');
 Route::get('/users', 'UserController@users');
