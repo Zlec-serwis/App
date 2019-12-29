@@ -29,14 +29,13 @@ Route::get('/services', 'PostController@showCategories');
 Route::get('offers/{offer}/accept', 'OfferController@accept');
 
 Route::resource('posts', 'PostController');
-Route::resource('comments', 'CommentsController');
-
 Route::get('posts/{post}/apply', 'PostController@applyShowForm');
 Route::post('posts/{post}/apply', 'PostController@apply');
 Route::get('posts/{post}/offers', 'PostController@showOffers');
 Route::get('/', 'PostController@index');
 Route::post('/search', 'PostController@search');
 
+Route::resource('comments', 'CommentsController');
 
 
 Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function(){
@@ -52,15 +51,21 @@ Route::group(['prefix'=>'workboard', 'middleware'=>'auth'], function(){
 });
 
 Auth::routes();
+
 Route::get('/profile', 'UserController@profile');
 Route::post('/profile', 'UserController@update_avatar');
-Route::get('/profile', 'UserController@showprofile');
+//Route::get('/profile', 'UserController@showprofile');
 
 Route::get('/profile/doer', 'UserController@doer_profile');
 Route::post('/profile/doer', 'UserController@doer_profile');
-Route::get('/users', 'UserController@users');
 
-Route::get('/users/{id}', 'UserController@show');
+Route::group(['prefix'=>'users'], function(){
+
+    Route::get('/', 'UserController@users');
+    Route::get('/{id}', 'UserController@show');
+
+});
+
 
 Route::get('/doer/create', 'UserController@create_doer');
 Route::post('/doer/create', 'UserController@store_doer');

@@ -22,4 +22,9 @@ class Offer extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function status()
+    {
+        return $this->hasMany(Status::class);
+    }
 }
