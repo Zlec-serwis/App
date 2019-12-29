@@ -2,8 +2,10 @@
 
 @section('content')
 
+@include('inc.button', ['url' => url('users')])
+
 <div class="row m-3">
-    <h1 class="display-5">Wykonawcy</h1>
+<h1 class="display-5">Wykonawcy</h1>
 </div>
 
 <div class="container">

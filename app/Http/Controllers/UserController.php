@@ -15,7 +15,7 @@ use phpDocumentor\Reflection\DocBlock\Description;
 class UserController extends Controller
 {
     public function profile(){
-        
+
         return view('profile', array('user'=> Auth::user()) );
     }
 
@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         return view('profile', compact('user'));
-        
+
     }
 
 
@@ -45,9 +45,23 @@ class UserController extends Controller
     /**
      * list of doers
      */
-    public function users()
+    public function users(Request $request)
     {
-        $doers = Doer::latest()->get();
+        $doers = Doer::latest();
+
+        if ($request->city) {
+            $doers = $doers->where('address_id', '=', $request->city);
+
+        }
+
+        if ($request->category) {
+            $doers = $doers->whereHas('categories', function ($query) use ($request) {
+                $query->where('id', '=', $request->category);
+            });
+        }
+
+        $doers = $doers->get();
+
         return view('doer.users', compact('doers'));
     }
 
