@@ -1,17 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create Post</h1>
-    {!! Form::open(['action'=> 'PostController@store', 'method' => 'POST']) !!}
-    <div class="form-group">
-        {{Form::label('title', 'Title')}}
-        {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
-    </div>
-    <div class="form-group">
-            {{Form::label('body', 'Body')}}</br>
-            {{Form::textarea('body', '', ['id' => 'article-ckeditor','class' => 'form-control', 'placeholder' => 'Body Text'])}}</br>
+    <div class="card m-4 p-4">
+        <h1>Stwórz zlecenie</h1>
+        {!! Form::open(['action'=> 'PostController@store', 'method' => 'POST']) !!}
+        <div class="form-group">
+            {{Form::label('title', 'Tytuł')}}
+            {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Tytuł'])}}
+        </div>
+        <div class="form-group">
+            {{Form::label('body', 'Opis')}}</br>
+            {{Form::textarea('body', '', ['id' => 'article-ckeditor','class' => 'form-control', 'placeholder' => 'Opis'])}}</br>
 
-            {{Form::label('CategoryList', 'Category List')}}</br>
+            {{Form::label('CategoryList', 'Kategorie')}}</br>
             {{Form::select('CategoryList', $categories , null, ['class' => 'form-control'])}}</br>
 
             {{Form::label('AddressesList', 'Adres')}}</br>
@@ -19,6 +20,8 @@
 
             {{Form::submit('Submit', ['class'=> 'btn btn-default btn-outline-dark'])}}
         </div>
-    {!!Form::close()!!}
+        {!!Form::close()!!}
+    </div>
+
 @endsection
 
