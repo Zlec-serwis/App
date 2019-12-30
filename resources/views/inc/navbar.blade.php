@@ -49,8 +49,8 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/profile">Profil</a>
             <a class="dropdown-item" href="/dashboard">Moje oferty</a>
-            @if(Auth::user()->doer=0)
-            <a class="dropdown-item" href="/workboard">Moje zlecenia</a>
+            @if(Auth::user()->doer!=0)
+            <a class="dropdown-item" href="/workboard">Moje zlecenia</a>@else
             @endif
                 <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
