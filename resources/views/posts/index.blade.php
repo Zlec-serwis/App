@@ -34,7 +34,7 @@
                 <div class="card m-1">
                     <div class="card-body">
                         {{$doer->name}}
-                        <img width="30" height="30" class="d-inline-block rounded float-right"  src="uploads/avatars/{{$doer->user->avatar}}" >
+                        <img width="30" height="30" class="d-inline-block rounded float-right"  src="uploads/avatars/{{$doer->user->avatar}}" alt="logo-firmy" >
                     </div>
                 </div>
             </a>
