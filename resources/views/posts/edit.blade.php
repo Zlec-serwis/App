@@ -9,7 +9,7 @@
             {{Form::text('title', $post->title, ['class' => 'form-control', 'placeholder' => 'Tytuł'])}}
         </div>
         <div class="form-group">
-            {{Form::label('body', 'Opis')}}</br>
+            {{Form::label('body', 'Opis')}} </br>
             {{Form::textarea('body', $post->body, ['id' => 'article-ckeditor','class' => 'form-control', 'placeholder' => 'Opis'])}}</br>
 
             {{Form::label('CategoryList', 'Kategoria')}}</br>
