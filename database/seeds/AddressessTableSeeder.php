@@ -13,7 +13,7 @@ class AddressessTableSeeder extends Seeder
     public function run()
     {
         //factory(Address::class, 10)->create();
-        DB::table('Addresses')->insert([
+        DB::table('addresses')->insert([
             ['city' => 'Warszawa', 'province' => 'mazowieckie'],
             ['city' => 'Kraków', 'province' => 'małopolskie'],
             ['city' => 'Poznań', 'province' => 'wielkopolskie'],
