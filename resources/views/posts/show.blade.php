@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="card mt-3 p-4">
+        <p>Oferta ważna do: {{$post->created_at->addDays(7)}} </p>
         <h3>{{$post->title}}</h3>
         <div>
             {!!$post->body!!}

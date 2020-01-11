@@ -4,12 +4,6 @@
     <h1>Zostań wykonawcą</h1>
     {!! Form::model($user,['action'=> 'UserController@store_doer', 'method' => 'POST']) !!}
     <div class="form-group">
-        <div class="col-md-0 control-label">
-            {!! Form::label('doer','Wykonawca')!!}
-            {{ Form::radio('doer', '1' , true) }}
-        </div>
-    </div>
-    <div class="form-group">
         {!! Form::label('name', 'Nazwa firmy') !!}
         {!! Form::text('name', '', ['class' => 'form-control']) !!}
     </div>

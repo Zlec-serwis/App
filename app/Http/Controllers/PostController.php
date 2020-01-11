@@ -7,6 +7,7 @@ use App\Category;
 use App\Doer;
 use App\Http\Requests\PostApplyRequest;
 use App\Offer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::where('active', true)->latest();
+        //$posts = Post::where('active', true)->latest();
+        $posts = Post::active()->latest();
         $users = Doer::Latest();
 
         if ($request->city) {
@@ -121,6 +123,7 @@ class PostController extends Controller
 
         $addressId = $request->input('Addresses');
         $post->address_id = $addressId;
+        $post->expired_time = Carbon::now()->addDay(7);
         $post->save();
 
         $categoryId = $request->input('CategoryList');

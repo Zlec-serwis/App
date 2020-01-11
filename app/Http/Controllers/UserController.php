@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+
 use App\User;
 use App\Doer;
 use App\Address;
 use App\Category;
 
-use Auth;
-use Image;
 use phpDocumentor\Reflection\DocBlock\Description;
 
 class UserController extends Controller
@@ -113,8 +114,13 @@ class UserController extends Controller
 
     public function store_doer(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'make' => 'required'
+        ]);
+
         $user = Auth::user();
-        $user->doer = $request->input('doer');
+        $user->doer = 1;
         $user->save();
 
         $doer = new Doer;

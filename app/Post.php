@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -9,7 +10,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
-        'active'
+        'active',
+        'expired_time'
     ];
 
     // Table Name
@@ -55,4 +57,14 @@ class Post extends Model
     {
         return $this->hasMany(Offer::class);
     }
+
+    public static function active()
+    {
+        //return $query->where('active', $value);
+
+        return static::where('active', 1)
+                       ->orWhere('expired_time', '<', Carbon::now());
+
+    }
+
 }
