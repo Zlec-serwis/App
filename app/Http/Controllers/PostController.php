@@ -28,7 +28,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         //$posts = Post::where('active', true)->latest();
-        $posts = Post::active()->latest();
+        $posts = Post::latest();
         $users = Doer::Latest();
 
         if ($request->city) {
