@@ -46,7 +46,7 @@ Route::group(['prefix'=>'dashboard', 'middleware'=>'auth'], function(){
 
 Route::group(['prefix'=>'workboard', 'middleware'=>'auth'], function(){
 
-    Route::get('/', 'WorkboardController@index');
+    Route::get('/', 'WorkBoardController@index');
 
 });
 
