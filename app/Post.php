@@ -58,13 +58,10 @@ class Post extends Model
         return $this->hasMany(Offer::class);
     }
 
-    public static function active()
+    public static function scopeActive($query)
     {
-        //return $query->where('active', $value);
-
-        return static::where('active', 1)
-                       ->orWhere('expired_time', '<', Carbon::now());
-
+        return $query->where('active', 1)
+            ->orWhere('expired_time', '<', Carbon::now());
     }
 
 }

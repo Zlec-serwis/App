@@ -28,12 +28,12 @@ class PostController extends Controller
     public function index(Request $request)
     {
         //$posts = Post::where('active', true)->latest();
-        $posts = Post::where('active',true)->latest();
+        $posts = Post::active()->latest();
         $users = Doer::Latest();
 
         if ($request->city) {
-            $posts = $posts->where('address_id', '=', $request->city)
-                ->where('active', true);
+            $posts = $posts->where('address_id', '=', $request->city);
+                //->where('active', true);
 
             $users = $users->where('address_id', '=', $request->city);
 
@@ -44,8 +44,8 @@ class PostController extends Controller
 
         if ($request->category) {
             $posts = $posts->whereHas('categories', function ($query) use ($request) {
-                $query->where('id', '=', $request->category)
-                    ->where('active', true);
+                $query->where('id', '=', $request->category);
+                    //->where('active', true);
             });
 
             $users = $users->whereHas('categories', function ($query) use ($request) {
