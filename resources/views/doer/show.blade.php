@@ -81,34 +81,56 @@
                 <h2 class="pb-3 display-6">NAPISZ DO NAS</h2>
             </div>
 
-            <form class="mbr-form form-active" action="https://mobirise.com/" method="post" data-form-title="Mobirise Form"><input type="hidden" data-form-email="true" value="R46ImfT8lRYLhZq6vpVE63L0V35bOdmwHjgn18Tp/HdDujD3JfWe/8bm7YjE2vjZZ7JFQMRNRIinYQUh3aNa2qi1GshxArFhHAffNuiFsZiNLfMCF8KElmS7V7lbqBIL">
-                <div class="row row-sm-offset">
-                    <div class="col-md-4 multi-horizontal" data-for="name">
-                        <div class="form-group">
-                            <label class="form-control-label mbr-fonts-style display-7" for="name-form1-4">Name</label>
-                            <input type="text" class="form-control" name="name" data-form-field="Name" required="" id="name-form1-4">
-                        </div>
-                    </div>
-                    <div class="col-md-4 multi-horizontal" data-for="email">
-                        <div class="form-group">
-                            <label class="form-control-label mbr-fonts-style display-7" for="email-form1-4">Email</label>
-                            <input type="email" class="form-control" name="email" data-form-field="Email" required="" id="email-form1-4">
-                        </div>
-                    </div>
-                    <div class="col-md-4 multi-horizontal" data-for="phone">
-                        <div class="form-group">
-                            <label class="form-control-label mbr-fonts-style display-7" for="phone-form1-4">Phone</label>
-                            <input type="tel" class="form-control" name="phone" data-form-field="Phone" id="phone-form1-4">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group" data-for="message">
-                    <label class="form-control-label mbr-fonts-style display-7" for="message-form1-4">Message</label>
-                    <textarea type="text" class="form-control" name="message" rows="7" data-form-field="Message" id="message-form1-4"></textarea>
-                </div>
+            {!! Form::open(['action'=> 'ContanctUsController@contactUsPost', 'method' => 'POST']) !!}
+            <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                {!! Form::label('Nazwa:') !!}
+                {!! Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Wprowadź nazwę']) !!}
+                <span class="text-danger">{{ $errors->first('name') }}</span>
+            </div>
+            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                {!! Form::label('Email:') !!}
+                {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Podaj e-mail']) !!}
+                <span class="text-danger">{{ $errors->first('email') }}</span>
+            </div>
+            <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
+                {!! Form::label('Wiadomość:') !!}
+                {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'placeholder'=>'Wiadomość']) !!}
+                <span class="text-danger">{{ $errors->first('message') }}</span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-light">Wyślij!</button>
+            </div>
+            {!! Form::close() !!}
 
-                <button href="" type="submit" class="btn btn-outline-light">Wyślij formularz</button>
-            </form>
+            {{-- Przykładowy formularz w HTML
+                        <form class="mbr-form form-active" action="https://mobirise.com/" method="post" data-form-title="Mobirise Form"><input type="hidden" data-form-email="true" value="R46ImfT8lRYLhZq6vpVE63L0V35bOdmwHjgn18Tp/HdDujD3JfWe/8bm7YjE2vjZZ7JFQMRNRIinYQUh3aNa2qi1GshxArFhHAffNuiFsZiNLfMCF8KElmS7V7lbqBIL">
+                            <div class="row row-sm-offset">
+                                <div class="col-md-4 multi-horizontal" data-for="name">
+                                    <div class="form-group">
+                                        <label class="form-control-label mbr-fonts-style display-7" for="name-form1-4">Name</label>
+                                        <input type="text" class="form-control" name="name" data-form-field="Name" required="" id="name-form1-4">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 multi-horizontal" data-for="email">
+                                    <div class="form-group">
+                                        <label class="form-control-label mbr-fonts-style display-7" for="email-form1-4">Email</label>
+                                        <input type="email" class="form-control" name="email" data-form-field="Email" required="" id="email-form1-4">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 multi-horizontal" data-for="phone">
+                                    <div class="form-group">
+                                        <label class="form-control-label mbr-fonts-style display-7" for="phone-form1-4">Phone</label>
+                                        <input type="tel" class="form-control" name="phone" data-form-field="Phone" id="phone-form1-4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" data-for="message">
+                                <label class="form-control-label mbr-fonts-style display-7" for="message-form1-4">Message</label>
+                                <textarea type="text" class="form-control" name="message" rows="7" data-form-field="Message" id="message-form1-4"></textarea>
+                            </div>
+
+                            <button href="" type="submit" class="btn btn-outline-light">Wyślij formularz</button>
+                        </form>--}}
         </div>
     </div>
 
