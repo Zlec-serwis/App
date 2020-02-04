@@ -11,6 +11,7 @@ return array(
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Comment' => $baseDir . '/app/Comment.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\ContanctUs' => $baseDir . '/app/ContanctUs.php',
     'App\\Doer' => $baseDir . '/app/Doer.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

@@ -399,6 +399,7 @@ class ComposerStaticInit60ce959ada6c33df42a0185b742eb2f1
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\ContanctUs' => __DIR__ . '/../..' . '/app/ContanctUs.php',
         'App\\Doer' => __DIR__ . '/../..' . '/app/Doer.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

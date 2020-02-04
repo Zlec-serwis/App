@@ -63,6 +63,7 @@ Route::group(['prefix'=>'users'], function(){
 
     Route::get('/', 'UserController@users');
     Route::get('/{id}', 'UserController@show');
+    Route::post('/contact', 'ContanctUsController@contactUsPost');
 
 });
 
