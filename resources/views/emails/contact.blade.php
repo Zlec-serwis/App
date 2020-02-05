@@ -125,8 +125,8 @@
                     <tr>
                         <td class="inner-td">
                             <p class="h2">Witaj otrzymałeś wiadomość od {{$contact->name}}!</p>
-                            <p class="center">Treśćw iadomości: <br> {{ $contact->message }}</p><br>
-
+                            <p class="center">Treść wiadomości: <br> {{ $contact->message }}</p><br>
+                            <p class="center">Kontakt: <br> {{ $contact->email }}</p><br>
                         </td>
                     </tr>
                 </table>
