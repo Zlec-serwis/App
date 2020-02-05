@@ -13,7 +13,7 @@
                 <form enctype="multipart/form-data" action="profile" method="POST">
                     <input type="file" name="avatar">
                     <input type="hidden" name="_token"  value="{{ csrf_token() }}">
-                    <input type="submit" class="pull-right btn btn-sm btn-primary">
+                    <input type="submit" class="pull-left btn btn-sm btn-primary" value="Zmień avatar">
                 </form>
             </div> <br> <hr>
 
