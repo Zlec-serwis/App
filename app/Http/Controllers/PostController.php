@@ -143,10 +143,19 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
+
         $offers = Offer::where('post_id', '=', $post->id)
             ->latest()->limit(6)->get();
+
         $doers = Doer::where('address_id', '=', $post->address_id)
-                        ->latest()->limit(6)->get();
+                        ->latest()->limit(6);
+        /*dd($doers = $doers->whereHas('categories', function ($q) use ($post){
+            $q->whereIn('id',$categories);
+        })->get());*/
+
+        $doers = $doers->whereHas('categories', function ($q) use($post){
+            $q->whereIn('id', $post->categories()->get(['id'])->pluck("id"));
+        })->get();
 
         return view('posts.show', compact('post', 'doers', 'offers'));
     }
