@@ -146,10 +146,9 @@ class PostController extends Controller
         $offers = Offer::where('post_id', '=', $post->id)
             ->latest()->limit(6)->get();
         $doers = Doer::where('address_id', '=', $post->address_id)
-                        ->where('categories_id', '=', $post->categories_id)
                         ->latest()->limit(6)->get();
 
-        return view('posts.show', compact('post', 'doers'));
+        return view('posts.show', compact('post', 'doers', 'offers'));
     }
 
     /**
@@ -165,7 +164,7 @@ class PostController extends Controller
 
         if (auth()->user()->id !== $post->user_id)
         {
-        return redirect('/posts')->with('error', 'Unauthorized Pages');
+        return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
         return view('posts.edit', compact('post', 'categories'));
