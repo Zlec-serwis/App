@@ -146,6 +146,7 @@ class PostController extends Controller
         $offers = Offer::where('post_id', '=', $post->id)
             ->latest()->limit(6)->get();
         $doers = Doer::where('address_id', '=', $post->address_id)
+                        ->where('categories_id', '=', $post->categories_id)
                         ->latest()->limit(6)->get();
 
         return view('posts.show', compact('post', 'doers'));
