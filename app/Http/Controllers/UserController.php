@@ -15,6 +15,11 @@ use phpDocumentor\Reflection\DocBlock\Description;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['expext' => ['users', 'show']]);
+    }
+
     public function profile(){
 
         return view('profile', array('user'=> Auth::user()) );

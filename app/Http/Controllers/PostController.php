@@ -149,9 +149,6 @@ class PostController extends Controller
 
         $doers = Doer::where('address_id', '=', $post->address_id)
                         ->latest()->limit(6);
-        /*dd($doers = $doers->whereHas('categories', function ($q) use ($post){
-            $q->whereIn('id',$categories);
-        })->get());*/
 
         $doers = $doers->whereHas('categories', function ($q) use($post){
             $q->whereIn('id', $post->categories()->get(['id'])->pluck("id"));
