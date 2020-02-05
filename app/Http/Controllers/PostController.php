@@ -165,7 +165,7 @@ class PostController extends Controller
 
         if (auth()->user()->id !== $post->user_id)
         {
-        return redirect('/posts')->with('error', 'Unauthorized Page');
+        return redirect('/posts')->with('error', 'Unauthorized Pages');
         }
 
         return view('posts.edit', compact('post', 'categories'));
