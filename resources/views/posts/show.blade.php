@@ -54,7 +54,7 @@
         <h2>Złożone oferty</h2>
     </div>
     <div class="row mt-3">
-        @foreach ($post->offers as $offer)
+        @foreach ($offers as $offer)
             <div class="col-md-4">
                 <div class="card mb-2">
                     <div class="card-body">
