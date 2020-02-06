@@ -17,7 +17,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['expext' => ['users', 'show']]);
+        $this->middleware('auth', ['except' => ['users', 'show']]);
     }
 
     public function profile(){
