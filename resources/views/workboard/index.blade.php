@@ -42,7 +42,7 @@
                                                     @foreach($post->offers as $offer)
                                                         @if($offer->doer_id == Auth::user()->doerRelation->id)
                                                             <button class="btn btn-primary" disabled>Oferta została złożona</button>
-                                                        @else
+                                                        @else($offer->doer_id !== Auth::user()->doerRelation->id)
                                                             <a href="{{ url('posts/' . $post->id . '/apply') }}" class="btn btn-primary">Złóż ofertę</a>
                                                         @endif
                                                     @endforeach
